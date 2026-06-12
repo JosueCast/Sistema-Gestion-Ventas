@@ -1,56 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+</p>
 
-# Sistema de Gestión de Ventas
+<p align="center">
+    <a href="https://github.com/JosueCast/Sistema-Gestion-Ventas"><img src="https://img.shields.io/badge/versión-1.0.0-blue" alt="Versión"></a>
+    <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-10.x-red" alt="Laravel 10.x"></a>
+    <a href="https://php.net"><img src="https://img.shields.io/badge/PHP-8.1+-777BB4" alt="PHP 8.1+"></a>
+    <a href="https://mysql.com"><img src="https://img.shields.io/badge/MySQL-8.0+-4479A1" alt="MySQL 8.0+"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/licencia-MIT-green" alt="Licencia MIT"></a>
+</p>
 
-Aplicación desarrollada en **Laravel** para la gestión de ventas, clientes y productos.  
-Incluye autenticación, panel administrativo y reportes básicos.
+# 🛒 Sistema de Gestión de Ventas
 
-## 🚀 Requisitos
+**Sistema web completo** desarrollado con Laravel para administrar ventas, clientes, productos y usuarios con diferentes roles.  
+Ideal para pequeños negocios que necesitan digitalizar su punto de venta y control de inventario.
+
+---
+
+## 📖 ¿Qué hace este software? (Lógica del negocio)
+
+El sistema permite gestionar el ciclo completo de una venta:
+
+1.  **👤 Gestión de usuarios y roles**  
+    - Dos tipos de usuarios: `admin` (acceso total) y `vendedor` (solo ventas y clientes).  
+    - Los usuarios inician sesión con credenciales seguras.
+
+2.  **📦 Gestión de productos**  
+    - Registrar productos con nombre, precio, stock y categoría.  
+    - Control de inventario: el stock se actualiza automáticamente al vender.
+
+3.  **👥 Gestión de clientes**  
+    - Base de datos de clientes con datos de contacto.  
+    - Historial de compras por cliente.
+
+4.  **🧾 Proceso de venta**  
+    - El vendedor selecciona un cliente y agrega productos al carrito.  
+    - El sistema calcula el total y valida el stock disponible.  
+    - Al confirmar, se genera un pedido, se resta el stock y se guarda el historial.
+
+5.  **📊 Reportes y dashboards**  
+    - Panel de control con ventas del día, productos más vendidos, etc.  
+    - Reportes filtrados por fecha, cliente o vendedor.
+
+6.  **🔒 Seguridad**  
+    - Protección de rutas por autenticación y roles.  
+    - Validación de datos en servidor y cliente.
+
+---
+
+## 🚀 Requisitos previos
 
 - PHP >= 8.1  
 - Composer  
 - MySQL o MariaDB  
-- Node.js & NPM (para assets frontend)  
-- Laravel >= 10.x  
+- Node.js y NPM  
+- Laravel 10.x
 
-## ⚙️ Instalación
+---
 
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/JosueCast/Sistema-Gestion-Ventas.git
-   cd Sistema-Gestion-Ventas
+## ⚙️ Instalación y configuración
 
-2. Instalar dependencias de PHP:
-     ```bash
-     composer install
+Sigue estos pasos para poner el sistema en marcha:
 
-3.Instalar dependencias de Node:
-    ```bash
-    npm install && npm run build
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/JosueCast/Sistema-Gestion-Ventas.git
+cd Sistema-Gestion-Ventas
 
-4.Configurar el archivo .env:
-    Edita las variables de conexión a la base de datos y claves necesarias.
+# 2. Instalar dependencias de PHP
+composer install
 
-5.Ejecutar migraciones y seeders:
-    php artisan migrate --seed
-    
-6.Levantar el servidor:
- php artisan serve && npm run serve
+# 3. Instalar dependencias de Node.js y compilar assets
+npm install && npm run build
 
- 📂 Estructura del proyecto
-app/ → Lógica principal de Laravel
+# 4. Copiar archivo de entorno y generar clave
+cp .env.example .env
+php artisan key:generate
 
-routes/ → Definición de rutas
+# 5. Configurar base de datos en el archivo .env
+# DB_DATABASE=sistema_ventas
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-resources/views/ → Vistas Blade
+# 6. Ejecutar migraciones y seeders (crea tablas + datos de prueba)
+php artisan migrate --seed
 
-database/migrations/ → Migraciones de base de datos
-👤 Autores
-Josue Cast — Desarrollador principal
+# 7. Iniciar servidor de desarrollo
+php artisan serve
 
-
-Este README es claro y profesional. Si quieres, podemos añadir una sección de **capturas de pantalla** o un **roadmap de funcionalidades futuras** para hacerlo más atractivo.  
-
-¿Quieres que te prepare una versión con [capturas de pantalla](ca://s?q=Agregar_capturas_de_pantalla_al_README_Laravel) o con [roadmap de funcionalidades](ca://s?q=Agregar_roadmap_de_funcionalidades_al_README_Laravel)?
-
-    
+# 8. En otra terminal, compilar assets en tiempo real (opcional)
+npm run dev
