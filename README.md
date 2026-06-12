@@ -90,3 +90,33 @@ php artisan serve
 
 # 8. En otra terminal, compilar assets en tiempo real (opcional)
 npm run dev
+
+
+
+📁 Sistema-Gestion-Ventas
+├── app/
+│   ├── Http/Controllers/     → Lógica de negocio (ventas, productos, clientes)
+│   ├── Models/               → Modelos Eloquent (User, Producto, Venta, Cliente, Rol)
+│   └── Policies/             → Reglas de autorización
+├── database/
+│   ├── migrations/           → Estructura de tablas
+│   └── seeders/              → Datos iniciales (roles, admin, etc.)
+├── resources/views/          → Vistas Blade (interfaz de usuario)
+├── routes/
+│   ├── web.php               → Rutas principales (protegidas por auth y roles)
+│   └── api.php               → Endpoints (si aplica)
+└── public/                   → Frontend compilado (CSS, JS, imágenes)
+
+👨‍💻 Autores
+Josué Cast – Desarrollador principal 
+
+🗺️ Roadmap (próximas funcionalidades)
+Módulo de proveedores y compras
+
+Facturación electrónica
+
+Gráficos estadísticos con Chart.js
+
+Exportación de reportes a Excel/PDF
+
+Módulo de caja chica / gastos
