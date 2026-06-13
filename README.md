@@ -1,58 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
 </p>
 
-## About Laravel
+<p align="center">
+    <a href="https://github.com/JosueCast/Sistema-Gestion-Ventas"><img src="https://img.shields.io/badge/versión-1.0.0-blue" alt="Versión"></a>
+    <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-10.x-red" alt="Laravel 10.x"></a>
+    <a href="https://php.net"><img src="https://img.shields.io/badge/PHP-8.1+-777BB4" alt="PHP 8.1+"></a>
+    <a href="https://mysql.com"><img src="https://img.shields.io/badge/MySQL-8.0+-4479A1" alt="MySQL 8.0+"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/licencia-MIT-green" alt="Licencia MIT"></a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 🛒 Sistema de Gestión de Ventas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Sistema web completo** desarrollado con Laravel para administrar ventas, clientes, productos y usuarios con diferentes roles.  
+Ideal para pequeños negocios que necesitan digitalizar su punto de venta y control de inventario.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📖 ¿Qué hace este software? (Lógica del negocio)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+El sistema permite gestionar el ciclo completo de una venta:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1.  **👤 Gestión de usuarios y roles**  
+    - Dos tipos de usuarios: `admin` (acceso total) y `vendedor` (solo ventas y clientes).  
+    - Los usuarios inician sesión con credenciales seguras.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+2.  **📦 Gestión de productos**  
+    - Registrar productos con nombre, precio, stock y categoría.  
+    - Control de inventario: el stock se actualiza automáticamente al vender.
 
-## Agentic Development
+3.  **👥 Gestión de clientes**  
+    - Base de datos de clientes con datos de contacto.  
+    - Historial de compras por cliente.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+4.  **🧾 Proceso de venta**  
+    - El vendedor selecciona un cliente y agrega productos al carrito.  
+    - El sistema calcula el total y valida el stock disponible.  
+    - Al confirmar, se genera un pedido, se resta el stock y se guarda el historial.
+
+5.  **📊 Reportes y dashboards**  
+    - Panel de control con ventas del día, productos más vendidos, etc.  
+    - Reportes filtrados por fecha, cliente o vendedor.
+
+6.  **🔒 Seguridad**  
+    - Protección de rutas por autenticación y roles.  
+    - Validación de datos en servidor y cliente.
+
+---
+
+## 🚀 Requisitos previos
+
+- PHP >= 8.1  
+- Composer  
+- MySQL o MariaDB  
+- Node.js y NPM  
+- Laravel 10.x
+
+---
+
+## ⚙️ Instalación y configuración
+
+Sigue estos pasos para poner el sistema en marcha:
 
 ```bash
-composer require laravel/boost --dev
+# 1. Clonar el repositorio
+git clone https://github.com/JosueCast/Sistema-Gestion-Ventas.git
+cd Sistema-Gestion-Ventas
 
-php artisan boost:install
-```
+# 2. Instalar dependencias de PHP
+composer install
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+# 3. Instalar dependencias de Node.js y compilar assets
+npm install && npm run build
 
-## Contributing
+# 4. Copiar archivo de entorno y generar clave
+cp .env.example .env
+php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 5. Configurar base de datos en el archivo .env
+# DB_DATABASE=sistema_ventas
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-## Code of Conduct
+# 6. Ejecutar migraciones y seeders (crea tablas + datos de prueba)
+php artisan migrate --seed
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 7. Iniciar servidor de desarrollo
+php artisan serve
 
-## Security Vulnerabilities
+# 8. En otra terminal, compilar assets en tiempo real (opcional)
+npm run dev
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📁 Sistema-Gestion-Ventas
+├── app/
+│   ├── Http/Controllers/     → Lógica de negocio (ventas, productos, clientes)
+│   ├── Models/               → Modelos Eloquent (User, Producto, Venta, Cliente, Rol)
+│   └── Policies/             → Reglas de autorización
+├── database/
+│   ├── migrations/           → Estructura de tablas
+│   └── seeders/              → Datos iniciales (roles, admin, etc.)
+├── resources/views/          → Vistas Blade (interfaz de usuario)
+├── routes/
+│   ├── web.php               → Rutas principales (protegidas por auth y roles)
+│   └── api.php               → Endpoints (si aplica)
+└── public/                   → Frontend compilado (CSS, JS, imágenes)
+
+👨‍💻 Autores
+Josué Cast – Desarrollador principal 
+
+🗺️ Roadmap (próximas funcionalidades)
+Módulo de proveedores y compras
+
+Facturación electrónica
+
+Gráficos estadísticos con Chart.js
+
+Exportación de reportes a Excel/PDF
+
+Módulo de caja chica / gastos
