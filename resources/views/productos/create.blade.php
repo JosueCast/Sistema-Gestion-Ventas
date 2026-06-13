@@ -154,7 +154,6 @@
 {{-- Modal para crear categoría REUTILIZABLE EN PRODUCTOS Y CATEGORIAS--}}
 @include('components.modalCreateCategoria')
 
-{{-- Esta linea es fundamental para el funcionamiento de los modales de flowbite--}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
 
 </x-app-layout>

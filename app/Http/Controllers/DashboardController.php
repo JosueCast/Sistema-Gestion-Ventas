@@ -13,7 +13,19 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalProducts = Producto::count();
+
+    $totalVentas = Pedidos::sum('total');
+
+    $categoriaMasProductos = Categoria::withCount('productos')
+    ->orderByDesc('productos_count')
+    ->first();
+
+    //ultimo producto registrado
+    $latestProduct = Producto::latest()->first();
+
+
+
+    $totalProducts = Producto::count();
 
     $totalCategories = Categoria::where('estado', 'activo')->count();
 
@@ -22,6 +34,8 @@ class DashboardController extends Controller
     $totalClients = Cliente::count();
 
     $totalOrders = Pedidos::count();
+
+    $stockLowProducts = Producto::where('stock', '<=', 10 )->count();
 
     $outOfStockProducts = Producto::where('stock', 0)->count();
 
@@ -39,7 +53,9 @@ class DashboardController extends Controller
         'totalOrders',
         'outOfStockProducts',
         'totalInventoryValue',
-        'latestProducts'
+        'latestProducts',
+        'totalVentas',
+        'categoriaMasProductos','stockLowProducts','latestProduct'
     ));
     }
 }
