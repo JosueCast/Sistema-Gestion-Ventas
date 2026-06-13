@@ -10,6 +10,8 @@
         <div class="bg-white shadow-lg rounded-lg px-4 py-6 w-1/4">
             <div class="border-b px-6 py-4 ">
                 <h5 class="text-4xl font-semibold text-gray-700 mt-2 ">Agregar Producto</h5>
+                
+
             </div>
             <div class="p-6">
             <!-- Mensajes de error generales -->
@@ -73,7 +75,7 @@
                             </select>
                         </div>
 
-                        <div >
+                        <div class="px-2 flex items-center " >
                             <label for="categoria_id" class="block text-xl font-medium text-gray-700">Categoría</label>
                             <select name="categoria_id" id="categoria_id" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -85,10 +87,23 @@
                                 @endforelse
                                 
                             </select>
+                           <button 
+                                data-modal-target="crud-modal"
+                                data-modal-toggle="crud-modal"
+                                class="ml-2 px-2 py-2  bg-blue-600 text-white rounded">
+                            
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z" clip-rule="evenodd"/>
+                            </svg>
+
+                        </button>
+                           
+                            
                         </div>
                        </div>
 
-                        
+                      
+
                       
                         <div class="flex justify-space-between">
                             <button type="button" 
@@ -101,10 +116,14 @@
                             </button>   
                         </div>
                     </form>
+                     
             </div>
+          
         </div>
     </div>
 
+
+    
     <!-- Botón que abre el modal -->
 
 <!-- Modal de confirmación -->
@@ -132,7 +151,10 @@
     </div>
 </div>
 
+{{-- Modal para crear categoría REUTILIZABLE EN PRODUCTOS Y CATEGORIAS--}}
+@include('components.modalCreateCategoria')
 
-
+{{-- Esta linea es fundamental para el funcionamiento de los modales de flowbite--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 
 </x-app-layout>
