@@ -7,6 +7,34 @@
             </p>
         </h2>
     </x-slot>
+  @if($productosCriticos > 0)
+<div 
+    x-data="{ show: true }" 
+    x-show="show" 
+    x-transition:enter="transform transition ease-out duration-300"
+    x-transition:enter-start="translate-x-full opacity-0"
+    x-transition:enter-end="translate-x-0 opacity-100"
+    x-transition:leave="transform transition ease-in duration-300"
+    x-transition:leave-start="translate-x-0 opacity-100"
+    x-transition:leave-end="translate-x-full opacity-0"
+    class="fixed top-5 right-5 flex items-center gap-2 bg-red-50 border-l-4 border-red-500 text-red-700 p-3 rounded-md shadow-lg w-72"
+>
+    <!-- Icono -->
+    <svg class="w-5 h-5 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm.75 5.75a.75.75 0 0 0-1.5 0v6.5a.75.75 0 0 0 1.5 0v-6.5Zm0 9a.75.75 0 0 0-1.5 0v.5a.75.75 0 0 0 1.5 0v-.5Z" clip-rule="evenodd"/>
+    </svg>
+    <!-- Texto -->
+    <span class="font-semibold">
+        Atención: {{ $productosCriticos }} productos con stock crítico.
+    </span>
+    <!-- Botón cerrar -->
+    <button @click="show = false" class="ml-auto text-red-600 hover:text-red-800">
+        ✕
+    </button>
+</div>
+@endif
+
+
 
     <div class="py-10 bg-white-100 min-h-screen w-full mx-auto">
 

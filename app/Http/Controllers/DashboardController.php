@@ -23,7 +23,9 @@ class DashboardController extends Controller
     //ultimo producto registrado
     $latestProduct = Producto::latest()->first();
 
-
+    //prodcutos criticos
+    $productosCriticos =
+    Producto::where('stock','<=',1)->count();
 
     $totalProducts = Producto::count();
 
@@ -55,7 +57,7 @@ class DashboardController extends Controller
         'totalInventoryValue',
         'latestProducts',
         'totalVentas',
-        'categoriaMasProductos','stockLowProducts','latestProduct'
+        'categoriaMasProductos','stockLowProducts','latestProduct','productosCriticos'
     ));
     }
 }
